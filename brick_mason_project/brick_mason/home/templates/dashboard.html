@@ -1,0 +1,179 @@
+{% extends 'base_generic.html' %}
+
+{% load static %}
+
+{% block content %}
+<style>
+.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+</style>
+
+<!--
+  <style id="compiled-css" type="text/css">
+#top-layer {
+   color:white;
+   width:80%;
+   height:100px;
+   margin:0;
+   padding:0;
+   opacity:0.9;
+   background-color:#C67610;
+   z-index:100000;
+}
+  </style>
+-->
+
+  <center>
+    <p style="font-size:32px; width:33%; border-width:3px; border-style:solid; border-color:#FFFFFF; background-color:#C67610; color:#FFFFFF; padding: 0.2em;">
+      {{user.username}}'s Dashboard
+    </p>  
+  </center>
+
+  <div class="center" style="width:50%; background-color:#C67610; color:#FFFFFF; opacity:0.9">
+    <center><h2>Drafted Bricks</h2></center>
+    <table class="center">
+      <tr>
+        <th>
+          <p> File </p>
+        </th>
+        <th>
+          <p>     </p>
+        </th>
+        <th>
+          <p> Title </p>
+        </th>
+        <th>
+          <p>     </p>
+        </th>
+        <th>
+          <p> Stage </p>
+        </th>
+      </tr>
+      {% for x in b_list %}    
+        <tr>
+          <td>
+            <center>
+              <form action="" method="post">
+                {% csrf_token %}
+                <button name="dtitle" value="{{ x.title }}">open</button>
+              </form>
+            </center>
+          </td>
+          <td>     </td>
+          <td>
+            <center> {{ x.title }} </center>
+          </td>
+          <td>     </td>
+          <td><center>
+            {% if x.stage == 1 %}
+              Brick Drafting
+            {% elif x.stage == 2 %}
+              SME Review
+            {% elif x.stage == 3 %}
+              Editor Review
+            {% elif x.stage == 4 %}
+              Ready For Insert
+            {% elif x.stage == 5 %}
+              Complete
+            {% endif %}
+          </center></td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div> 
+
+  <div class="center" style="width:50%; background-color:#C67610; color:#FFFFFF; opacity:0.9">
+    <center><h2>Bricks Pending SME Review</h2></center>
+    <table class="center">
+      <tr>
+        <th>
+          <p> File </p>
+        </th>
+        <th>
+          <p>     </p>
+        </th>
+        <th>
+          <p> Title </p>
+        </th>
+        <th>
+          <p>     </p>
+        </th>
+        <th>
+          <p> Stage </p>
+        </th>
+      </tr>
+      {% for x in s_list %}    
+        <tr>
+            <td>
+            <center>
+              <form action="" method="post">
+                {% csrf_token %}
+                <button name="stitle" value="{{ x.title }}">open</button>
+              </form>
+            </center>
+          </td>
+          <td>     </td>
+          <td><center>{{ x.title }}</center></td>
+          <td>     </td>
+          <td><center>
+            {% if x.stage == 2 %}
+              SME Review
+            {% endif %}
+          </center></td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div> 
+  
+  <div class="center" style="width:50%; background-color:#C67610; color:#FFFFFF; opacity:0.9">
+    <center><h2>Bricks Pending Editor Review</h2></center>
+      <table class="center">
+      <tr>
+        <th>
+          <p> File </p>
+        </th>
+        <th>
+          <p>     </p>
+        </th>
+        <th>
+          <p> Title </p>
+        </th>
+        <th>
+          <p>     </p>
+        </th>
+        <th>
+          <p> Stage </p>
+        </th>
+      </tr>
+      {% for x in e_list %}    
+        <tr>
+          <td>
+            <center>
+              <form action="" method="post">
+                {% csrf_token %}
+                <button name="etitle" value="{{ x.title }}">open</button>
+              </form>
+            </center>
+          </td>
+          <td>     </td>
+          <td>
+            <center>
+              {{ x.title }}
+            </center>
+          </td>
+          <td>     </td>
+          <td>
+            <center>
+              {% if x.stage == 3 %}
+                Editor Review
+              {% endif %}
+            </center>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div> 
+  
+{% endblock %}

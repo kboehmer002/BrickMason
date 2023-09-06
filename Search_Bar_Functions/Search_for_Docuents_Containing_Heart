@@ -1,0 +1,24 @@
+# Define a function to search for the term "heart" under the subject "medical"
+def search_documents(documents):
+    # Create a list to store the medical documents containing the term "heart"
+    medical_documents = []
+    
+    # Iterate over each document
+    for doc in documents:
+        # Check if the document contains the term "heart" and is classified as "medical"
+        if "heart" in doc.lower() and "medical" in doc.lower():
+            medical_documents.append(doc)
+    
+    # Return the list of medical documents containing the term "heart"
+    return medical_documents
+
+# Example usage
+doc1 = "The heart is a vital organ in the human body. It pumps blood throughout the circulatory system."
+doc2 = "Heart disease is a common medical condition. Risk factors for heart disease include high blood pressure and high cholesterol."
+doc3 = "The heart of the ocean is a fictional blue diamond featured in the movie Titanic."
+
+documents = [doc1, doc2, doc3]
+
+medical_documents = search_documents(documents)
+
+print(medical_documents)

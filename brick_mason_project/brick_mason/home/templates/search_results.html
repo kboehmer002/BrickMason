@@ -1,0 +1,80 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<style>
+.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+</style>
+
+<!-- Display for selection, a list of search results -->
+
+<form action="" method="post">
+{% csrf_token %}
+
+<table class="center" style="width:50%; background-color:#C67610; color:#FFFFFF; opacity:0.9">
+  <tr>
+    <th>
+    </th>
+    <th>
+        <p><u> File </u></p>
+    </th>
+    <th>
+        {% if state == 't-' %}
+          <button name="tbutton" value="t+"> Title </button>
+        {% else %}
+          <button name="tbutton" value="t-"> Title </button>
+        {% endif %}
+    </th>
+    <th>
+        {% if state == 'd-' %}
+          <button name="dbutton" value="d+"> Date Modified </button>
+        {% else %}
+          <button name="dbutton" value="d-"> Date Modified </button>
+        {% endif %}
+    </th>
+    <th>
+        {% if state == 'w-' %}
+          <button name="wbutton" value="w+"> Word Count </button>
+        {% else %}
+          <button name="wbutton" value="w-"> Word Count </button>
+        {% endif %}
+    </th>
+  </tr>
+  {% for x in results %}
+    <tr>
+        <td><button name="rbutton" value={{x.fid__file}}>-</button></td>
+        {% for q in queryset %}
+          {% if x.fid == q.fid.id %}
+            {% if x.fid__file|slice:"-4:" == "docx" %}
+              <!--<button name="opendocx" value={{q.fid.file.url}}> {{ x.fid__file|slice:"-4:" }} </button>-->
+              <td><center><a href={{ q.fid.file.url }}> {{ x.fid__file|slice:"-4:" }} </a></center></td>
+            {% else %}
+              <td><center><a href={{ q.fid.file.url }}> {{ x.fid__file|slice:"-3:" }} </a></center></td>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        <td><center>{{ x.fid__title }}</center></td>
+        <td><center>{{ x.fid__date_modified }}</center></td>
+        <td><center>{{ x.fid__word_count }}</center></td>
+    </tr>
+  {% endfor %}
+</table>
+
+<table class="center" style:"50%">
+  <tr>
+    <th>
+      <input type=button value="Return to Search" onClick="javascript:history.go(-1);">
+    </th>
+    <th>
+    </th>
+    <th>
+      <button class="center" name="submit" value="submit"> Generate Brick </button>
+    </th>
+  <tr>
+</table>
+
+</form>
+
+{% endblock%}

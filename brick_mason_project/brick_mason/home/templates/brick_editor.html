@@ -1,0 +1,143 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: #C67610;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #C67610;
+  min-width: 180px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content button {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown button:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style> 
+{% endblock %}
+
+{% block content %}
+
+<div method="post" class="row">
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">File</button>
+    <div id="myDropdown" class="dropdown-content">
+      <form action="" method="post"> {% csrf_token %}
+        <button class="dropbtn" name="selector" value="0"> New Project </button>
+        <button class="dropbtn" name="selector" value="1"> Save </button>
+        <button class="dropbtn" name="selector" value="2"> Save As </button>
+        <button class="dropbtn" name="selector" value="3"> Load </button>
+        <button class="dropbtn" name="selector" value="4"> Import </button>
+        <button class="dropbtn" name="selector" value="5"> Export </button>
+        <button class="dropbtn" name="selector" value="6"> Rename </button>
+        <button class="dropbtn" name="selector" value="7"> Exit </button>
+      </form>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button onclick="myFunction2()" class="dropbtn">Insert</button>
+    <div id="myDropdown2" class="dropdown-content">
+      <form action="" method="post"> {% csrf_token %}
+        <button class="dropbtn" name="selector" value="8"> Summarizer </button>
+        <button class="dropbtn" name="selector" value="9"> Q&A List </button>
+        <button class="dropbtn" name="selector" value="10"> Image </button>
+        <button class="dropbtn" name="selector" value="11"> Source Link </button>
+      </form>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button onclick="myFunction3()" class="dropbtn">View</button>
+    <div id="myDropdown3" class="dropdown-content">
+      <form action="" method="post"> {% csrf_token %}
+        <button class="dropbtn" name="selector" value="12"> References </button>
+        <button class="dropbtn" name="selector" value="13"> Contradictions </button>
+        <button class="dropbtn" name="selector" value="14"> Redundancies </button>
+        <button class="dropbtn" name="selector" value="15"> Outdated </button>
+        <button class="dropbtn" name="selector" value="16"> Side-By-Side </button>
+        <button class="dropbtn" name="selector" value="17"> Popout Reference </button>
+      </form>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button onclick="myFunction4()" class="dropbtn">Tools</button>
+    <div id="myDropdown4" class="dropdown-content">
+      <form action="" method="post"> {% csrf_token %}
+        <button class="dropbtn" name="selector" value="18"> Flag </button>
+        <button class="dropbtn" name="selector" value="19"> Set Workspace </button>
+        <button class="dropbtn" name="selector" value="20"> Set Stage </button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="column"></div>
+  <div class="column"></div>
+  <div class="column"></div>
+</div>
+
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function myFunction2() {
+  document.getElementById("myDropdown2").classList.toggle("show");
+}
+
+function myFunction3() {
+  document.getElementById("myDropdown3").classList.toggle("show");
+}
+
+function myFunction4() {
+  document.getElementById("myDropdown4").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+{% endblock %}
+{% block bottom %}
+{% endblock %}

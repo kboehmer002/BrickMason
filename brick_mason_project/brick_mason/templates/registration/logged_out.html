@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <center>
+        <br><br><br><br>
+        <center style="width:33%; border-width:3px; border-style:solid; border-color:#FFFFFF; background-color:#C67610; color:#FFFFFF; padding: .2em;">
+            <div class="alert alert-success" role="alert">
+                <h2 style="text-align: center;">You have succesfully Logged Out!</h2>
+            </div>
+            <br>
+            <h3>Would you like to Login again?</h3>
+            <br><br>
+            <a href="{% url 'login' %}"><h3>Login</h3></a>
+            <br><br>
+        </center>
+    </center>
+{% endblock %}

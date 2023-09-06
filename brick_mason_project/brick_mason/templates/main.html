@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  <center>
+  <font face = "Bahnschrift SemiBold Condensed" size = "7" color = "#FFFFFF">
+    <p>
+        <big><big><big> Brick Mason </big></big></big>
+    </p>
+  </font>
+</center>
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <center>
+    <p style="width:33%; border-width:3px; border-style:solid; border-color:#FFFFFF; background-color:#C67610; color:#FFFFFF; padding: 1em;">
+      <font face = "Bahnschrift SemiBold Condensed" size = "5" color = "#FFFFFF">
+        Welcome to Brick Mason, {{ user.username }}!  <br><br><br>
+        <a href="/dashboard">Enter</a> <br><br>
+        <a href="{% url 'logout' %}">Log Out</a>
+      </font>
+    </p>
+  </center>
+{% else %}
+  <center>
+    <p style="width:33%; border-width:3px; border-style:solid; border-color:#FFFFFF; background-color:#C67610; color:#FFFFFF; padding: 1em;">
+      <font face = "Bahnschrift SemiBold Condensed" size = "5" color = "#FFFFFF"> <br>
+        <a href="{% url 'login' %}">Log In</a> <br><br><br>
+        Don't have an account? <br>
+        <a href="{% url 'register' %}">Register</a> <br><br>
+      </font>
+    </P>
+  </center>
+{% endif %}
+{% endblock %}

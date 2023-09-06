@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <center>
+  <font face = "Bahnschrift SemiBold Condensed" size = "7" color = "#FFFFFF">
+    <p>
+        <big><big><big> Brick Mason </big></big></big>
+    </p>
+  </font>
+</center>
+{% endblock %}
+
+{% block content %}
+<center>
+  <center style="width:33%; border-width:3px; border-style:solid; border-color:#FFFFFF; background-color:#C67610; color:#FFFFFF; padding: .2em;">
+      <font face = "Bahnschrift SemiBold Condensed" size = "5" color = "#FFFFFF">
+
+        <form method="post" >
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Log In</button>
+        </form>
+
+          <br>
+          Don't have an account? <a href="{% url 'register' %}">Signup Here</a>
+          <br><br>
+          Forgot Password? <a href="{% url 'password_reset' %}">Recover Password</a>
+          <br><br>
+      </font>
+  </center>
+</center>
+
+{% endblock %}

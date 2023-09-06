@@ -1,0 +1,25 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}
+<center>
+<h3 style="width:50%; background-color:#C67610; color:#FFFFFF; opacity:0.9; padding: 1em;"><center>Registration</center></h3>
+</center>
+{% endblock %}
+
+{% block content %}
+<center>
+<hr style="height: 5px; background: #C67610">
+
+
+<form action="" method="POST" style="text-align: left; width:50%; background-color:#C67610; color:#FFFFFF; opacity:0.9; padding: 1em;">
+    
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <center><button type="submit">Register</button></center>
+</form>
+</center>
+{% endblock %}
+
+{% block bottom %}
+{% endblock %}

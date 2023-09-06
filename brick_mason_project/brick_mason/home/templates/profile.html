@@ -1,0 +1,33 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <style id="compiled-css" type="text/css">
+#top-layer {
+   color:white;
+   width:80%;
+   height:230px;
+   margin:0;
+   padding:0;
+   opacity:0.9;
+   background-color:#C67610;
+   z-index:100000;<!--from  w w  w .jav a  2s  . co  m-->
+}
+  </style>
+
+    <h1 style="color:white"><center> Profile Page </center></h1>
+    <h2 style="color:white">This is the profile page for {{user.username}}</h2>
+    
+
+  <!-- FORM HERE -->
+    <form method="POST" enctype="multipart/form-data" id="top-layer" style="margin:auto; color:white">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Profile Info</legend>
+            <!-- User form -->
+            {{ u_form.as_p }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Update</button>
+        </div>
+    </form>
+{% endblock content %}

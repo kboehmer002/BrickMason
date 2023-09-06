@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  {% load static %}
+<style>
+    body {
+        background-image: url("{% static 'bg_brickwall.jpeg' %}");
+    }
+    p {
+        color: #FFFFFF;
+        margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+</style>
+<head>
+    {% block title %}
+    {% endblock %}
+</head>
+<body>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</html>

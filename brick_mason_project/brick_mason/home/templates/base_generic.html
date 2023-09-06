@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<style>
+    body {
+        background-image: url("{% static 'bg_brickwall.jpeg' %}");
+    }
+    p {
+        margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+</style>
+
+<head>
+    {% block title %}
+        <left>
+            <font face = "Bahnschrift SemiBold Condensed" size = "6">
+                <div class="topnav"> 
+                    <p style="border-width:3px; border-style:solid; border-color:#FFFFFF; background-color:#C67610; color:#FFFFFF; padding: .2em;">
+                    <a href="/dashboard">Dashboard</a> |
+                    <a href="/profile">Profile</a> |
+                    <a href="/import">Upload</a> |
+                    <a href="/search">Search</a> |
+                    <a href="/brick_editor">Brick Editor</a> |
+                    </p>
+                </div>
+            </font>
+        </left>
+    {% endblock %}
+</head>
+
+<body>
+
+{% block content %}
+{% endblock %}
+
+{% block bottom %}
+    <div style="width: 100%; display: table;">
+        <div style="display: table-row">
+            <div style="width: 200px; display: table-cell;" align="center">
+                <div>
+                    <p style="border-width:3px; border-style:solid; border-color:#FFFFFF; background-color:#C67610; color:#FFFFFF; padding: 1em;">
+                        <font face = "Calibri Light" size = "5">
+                            <span><a href="{% url 'logout' %}">LOG OUT</a></span>
+                        </font>
+                    </p>
+                </div>
+            </div>
+            <div style="width: 600px; display: table-cell;" align="center"></div>
+            <div style="width: 200px; display: table-cell;" align="center">
+                <div>
+                <p style="border-width:3px; border-style:solid; border-color:#FFFFFF; background-color:#C67610; color:#FFFFFF; padding: 1em;">
+                    <font face = "Calibri Light" size = "5">
+                        <span>
+                            <b>
+                            <a href="{% static 'Lab 4 Brick Mason User Manual - Team Black - Final.pdf' %}">HELP</a>
+                            </b>
+                        </span>
+                    </font>
+                </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

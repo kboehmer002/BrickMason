@@ -1,0 +1,19 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <center>
+        <p style="border-width:6px; border-style:solid; border-color:#C67610; background-color:#FFFFFF; color:#C67610; padding: 1em;">
+            <font face = "Bahnschrift SemiBold Condensed" size = "6">
+                        <span><b>SEARCH</b></span>
+            </font>
+        </p>
+    </center>
+
+    <form method="POST" style="background-color:#C67610; color:#FFFFFF; opacity:0.9">
+        {% csrf_token %}
+        {{ s_form.as_p }}
+        <input type="submit" value="Submit">
+        <input type=button value="Cancel" onClick="javascript:history.go(-1);">
+    </form>
+
+{% endblock %}
